@@ -1,5 +1,7 @@
 <script>
 
+import "../../node_modules/flag-icons/css/flag-icons.min.css";
+
 export default {
 
   name: "AppMain",
@@ -25,6 +27,7 @@ export default {
     <div>{{ movie.original_title }}</div>
 
     <div>{{ movie.original_language }}</div>
+    <span class="fi" :class="'fi-' + movie.original_language"></span>
 
     <div>{{ movie.vote_average }}</div>
 

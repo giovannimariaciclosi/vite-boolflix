@@ -1,5 +1,4 @@
 <script>
-import AppSearch from './AppSearch.vue';
 
 import { store } from "../store";
 
@@ -16,14 +15,19 @@ export default {
     };
   },
 
-  components: { AppSearch }
+  emits: ['userSearch'],
+
+
 }
 </script>
 
 <template>
   <div id="header-container">
     <div>Boolflix</div>
-    <AppSearch></AppSearch>
+    <div id="search-container">
+      <input v-model="store.MovieNameSearch" type="text" placeholder="cerca" @keyup.enter="$emit('userSearch')">
+      <button @click="$emit('userSearch')">Cerca</button>
+    </div>
   </div>
 </template>
 

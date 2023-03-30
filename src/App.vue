@@ -27,13 +27,28 @@ export default {
   methods: {
 
     searchMovie() {
+      let APIfullSearchMovie = this.store.APIbaseSearchMovie + this.store.APIkey + this.store.languageIT + this.store.safeForWork + this.store.APIsearchQuery + this.store.MovieNameSearch;
+      let APIfullSearchTvShow = this.store.APIbaseSearchTvShow + this.store.APIkey + this.store.languageIT + this.store.safeForWork + this.store.APIsearchQuery + this.store.MovieNameSearch;
+      console.log(APIfullSearchMovie);
+      console.log(APIfullSearchTvShow);
 
-      console.log(this.store.APIbaseSearchMovie + this.store.APIkey + this.store.languageIT + this.store.safeForWork + this.store.APIsearchQuery + this.store.MovieNameSearch);
-      axios.get(this.store.APIbaseSearchMovie + this.store.APIkey + this.store.languageIT + this.store.safeForWork + this.store.APIsearchQuery + this.store.MovieNameSearch).then((res) => {
-        console.log(res.data.results);
+      axios.get(APIfullSearchMovie).then((res) => {
+
+        // console.log(res.data.results);
+
         this.store.movies = res.data.results;
-        console.log(this.store.movies);
+        // console.log(this.store.movies);
       });
+
+      axios.get(APIfullSearchTvShow).then((res) => {
+
+        console.log(res.data.results);
+
+        this.store.tvShows = res.data.results;
+        console.log(this.store.tvShows);
+      });
+
+
     },
 
   },

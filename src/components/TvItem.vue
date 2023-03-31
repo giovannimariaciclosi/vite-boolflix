@@ -15,6 +15,23 @@ export default {
     tvShow: Object,
   },
 
+  methods: {
+
+    flagIcons() {
+
+      let language = this.tvShow.original_language;
+      console.log(language)
+
+      if (language == "en") {
+        language = "gb";
+      } else if (language == "") {
+        language = "xx";
+
+        return language;
+      }
+    }
+
+  },
 }
 
 </script>
@@ -27,6 +44,7 @@ export default {
     <div>{{ tvShow.original_name }}</div>
 
     <div>{{ tvShow.original_language }}</div>
+    <span class="fi" :class="`fi-${flagIcons()}`"></span>
     <span class="fi" :class="'fi-' + tvShow.original_language"></span>
 
     <div>{{ tvShow.vote_average }}</div>

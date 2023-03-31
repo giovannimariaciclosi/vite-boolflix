@@ -76,6 +76,21 @@ export default {
       return imagePath;
     },
 
+    getMovieRating() {
+
+      let movieRating = Math.ceil(Math.floor(this.movie.vote_average) / 2);
+
+      if (movieRating == 0) {
+        movieRating = 1;
+
+        return movieRating;
+      }
+
+
+      return movieRating;
+    },
+
+
   },
 
 
@@ -93,7 +108,7 @@ export default {
     <div>{{ movie.original_language }}</div>
     <span class="fi" :class="'fi-' + convertLangToCountry"></span>
 
-    <div>{{ movie.vote_average }}</div>
+    <div>{{ getMovieRating }}</div>
 
     <img :src="getMovieImagePath" alt="test">
 

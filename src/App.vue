@@ -34,7 +34,7 @@ export default {
 
       axios.get(APIfullSearchMovie).then((res) => {
 
-        // console.log(res.data.results);
+        console.log(res.data.results);
 
         this.store.movies = res.data.results;
         // console.log(this.store.movies);
@@ -45,7 +45,7 @@ export default {
         console.log(res.data.results);
 
         this.store.tvShows = res.data.results;
-        console.log(this.store.tvShows);
+        // console.log(this.store.tvShows);
       });
 
 

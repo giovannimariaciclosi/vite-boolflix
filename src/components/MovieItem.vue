@@ -1,5 +1,7 @@
 <script>
 
+import { store } from "../store";
+
 import "../../node_modules/flag-icons/css/flag-icons.min.css";
 
 export default {
@@ -8,6 +10,9 @@ export default {
 
   data() {
     return {
+
+      store,
+
     };
   },
 
@@ -19,7 +24,6 @@ export default {
 
     convertLangToCountry() {
       let language = this.movie.original_language;
-      console.log(language)
 
       switch (language) {
         case "en":
@@ -40,6 +44,9 @@ export default {
         case "hi":
           language = "in";
           break;
+        case "te":
+          language = "in";
+          break;
         case "cs":
           language = "cz";
           break;
@@ -55,7 +62,20 @@ export default {
 
       }
       return language;
-    }
+    },
+
+    getMovieImagePath() {
+
+      let imagePath = this.store.APIimageBase + this.store.APIimageSize + this.movie.poster_path;
+
+
+      if (this.movie.poster_path == null) {
+        return "https://image.tmdb.org/t/p/w200//9p10J9Xp7MuaVac56g8BwAuXEsA.jpg";
+      };
+
+      return imagePath;
+    },
+
   },
 
 
@@ -74,6 +94,8 @@ export default {
     <span class="fi" :class="'fi-' + convertLangToCountry"></span>
 
     <div>{{ movie.vote_average }}</div>
+
+    <img :src="getMovieImagePath" alt="test">
 
   </div>
 </template>

@@ -59,8 +59,12 @@ export default {
 </script>
 
 <template>
-  <AppHeader @userSearch="searchMovie()"></AppHeader>
-  <AppMain></AppMain>
+  <header>
+    <AppHeader @userSearch="searchMovie()"></AppHeader>
+  </header>
+  <main>
+    <AppMain></AppMain>
+  </main>
 </template>
 
 <style lang="scss" scoped></style>

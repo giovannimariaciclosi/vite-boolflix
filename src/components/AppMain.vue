@@ -39,10 +39,17 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+h1 {
+  padding-top: 100px;
+  text-align: center;
+}
+
 .main-container {
   display: flex;
   flex-flow: row wrap;
   gap: 20px;
-
+  margin: 0 auto;
+  max-width: 1440px;
+  padding-top: 1em;
 }
 </style>

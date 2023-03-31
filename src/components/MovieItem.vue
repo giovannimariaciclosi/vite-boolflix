@@ -110,13 +110,20 @@ export default {
 
     <div>{{ getMovieRating }}</div>
 
+    <div class="rating">
+      <i v-for="star in getMovieRating" class="fa-solid fa-star"></i>
+    </div>
+
     <img :src="getMovieImagePath" alt="test">
-    <i class="fa-solid fa-star"></i>
+
   </div>
 </template>
 
 <style lang="scss" scoped>
 .movie {
   width: calc(100% / 4 - 20px / 4 * 3);
+  display: flex;
+  flex-direction: column;
+
 }
 </style>

@@ -75,6 +75,20 @@ export default {
       return imagePath;
 
     },
+
+    getTvShowRating() {
+
+      let tvShowRating = Math.ceil(Math.floor(this.tvShow.vote_average) / 2);
+
+      if (tvShowRating == 0) {
+        tvShowRating = 1;
+
+        return tvShowRating;
+      }
+
+
+      return tvShowRating;
+    },
   },
 
 }
@@ -91,10 +105,13 @@ export default {
     <div>{{ tvShow.original_language }}</div>
     <span class="fi" :class="'fi-' + convertLangToCountry"></span>
 
-    <div>{{ tvShow.vote_average }}</div>
+    <div>{{ getTvShowRating }}</div>
+
+    <div class="rating">
+      <i v-for="star in getTvShowRating" class="fa-solid fa-star"></i>
+    </div>
 
     <img :src="getTvShowImagePath" alt="test">
-
 
   </div>
 </template>
@@ -102,5 +119,7 @@ export default {
 <style lang="scss" scoped>
 .tv-shows {
   width: calc(100% / 4 - 20px / 4 * 3);
+  display: flex;
+  flex-direction: column;
 }
 </style>

@@ -27,8 +27,8 @@ export default {
   methods: {
 
     searchMovie() {
-      let APIfullSearchMovie = this.store.APIbaseSearchMovie + this.store.APIkey + this.store.languageIT + this.store.safeForWork + this.store.APIsearchQuery + this.store.MovieNameSearch;
-      let APIfullSearchTvShow = this.store.APIbaseSearchTvShow + this.store.APIkey + this.store.languageIT + this.store.safeForWork + this.store.APIsearchQuery + this.store.MovieNameSearch;
+      let APIfullSearchMovie = this.store.APIbaseSearchMovie + this.store.APIkey + this.store.languageIT + this.store.safeForWork + this.store.APIsearchQuery + encodeURIComponent(this.store.MovieNameSearch);
+      let APIfullSearchTvShow = this.store.APIbaseSearchTvShow + this.store.APIkey + this.store.languageIT + this.store.safeForWork + this.store.APIsearchQuery + encodeURIComponent(this.store.MovieNameSearch);
       console.log(APIfullSearchMovie);
       console.log(APIfullSearchTvShow);
 

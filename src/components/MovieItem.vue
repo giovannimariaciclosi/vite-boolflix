@@ -111,7 +111,7 @@ export default {
     <div>{{ getMovieRating }}</div>
 
     <img :src="getMovieImagePath" alt="test">
-
+    <i class="fa-solid fa-star"></i>
   </div>
 </template>
 

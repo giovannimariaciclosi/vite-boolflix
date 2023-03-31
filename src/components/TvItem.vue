@@ -15,23 +15,50 @@ export default {
     tvShow: Object,
   },
 
-  methods: {
+  computed: {
 
-    flagIcons() {
-
+    convertLangToCountry() {
       let language = this.tvShow.original_language;
       console.log(language)
 
-      if (language == "en") {
-        language = "gb";
-      } else if (language == "") {
-        language = "xx";
+      switch (language) {
+        case "en":
+          language = "us";
+          break;
+        case "zh":
+          language = "cn";
+          break;
+        case "ja":
+          language = "jp";
+          break;
+        case "ko":
+          language = "kr";
+          break;
+        case "el":
+          language = "gr";
+          break;
+        case "hi":
+          language = "in";
+          break;
+        case "cs":
+          language = "cz";
+          break;
+        case "he":
+          language = "il";
+          break;
+        case "da":
+          language = "dk";
+          break;
+        case "":
+          language = "xx";
+          break;
 
-        return language;
       }
-    }
+      return language;
 
+    }
   },
+
 }
 
 </script>
@@ -44,8 +71,7 @@ export default {
     <div>{{ tvShow.original_name }}</div>
 
     <div>{{ tvShow.original_language }}</div>
-    <span class="fi" :class="`fi-${flagIcons()}`"></span>
-    <span class="fi" :class="'fi-' + tvShow.original_language"></span>
+    <span class="fi" :class="'fi-' + convertLangToCountry"></span>
 
     <div>{{ tvShow.vote_average }}</div>
 

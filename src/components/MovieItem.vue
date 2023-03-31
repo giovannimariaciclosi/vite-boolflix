@@ -99,31 +99,49 @@ export default {
 </script>
 
 <template>
-  <div class="movie">
+  <div :style="{ backgroundImage: 'url(' + getMovieImagePath + ')' }" class="movie">
 
-    <div>{{ movie.title }}</div>
+    <div class="movie-info">
+      <div>{{ movie.title }}</div>
 
-    <div>{{ movie.original_title }}</div>
+      <div>{{ movie.original_title }}</div>
 
-    <div>{{ movie.original_language }}</div>
-    <span class="fi" :class="'fi-' + convertLangToCountry"></span>
+      <div>{{ movie.original_language }}</div>
+      <span class="fi" :class="'fi-' + convertLangToCountry"></span>
 
-    <div>{{ getMovieRating }}</div>
+      <div>{{ getMovieRating }}</div>
 
-    <div class="rating">
-      <i v-for="star in getMovieRating" class="fa-solid fa-star"></i>
+      <div class="rating">
+        <i v-for="star in getMovieRating" class="fa-solid fa-star"></i>
+      </div>
     </div>
 
-    <img :src="getMovieImagePath" alt="test">
+    <!-- <div id="movie-poster">
+                              <img :src="getMovieImagePath" alt="test">
+                            </div> -->
+
 
   </div>
 </template>
 
 <style lang="scss" scoped>
+.movie:hover {
+  background-image: none;
+}
+
 .movie {
   width: calc(100% / 4 - 20px / 4 * 3);
   display: flex;
   flex-direction: column;
 
+  height: 513px;
+  cursor: pointer;
+
+
+  #movie-poster {
+    border: 1px solid white;
+    cursor: pointer;
+
+  }
 }
 </style>

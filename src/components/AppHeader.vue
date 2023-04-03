@@ -15,6 +15,8 @@ export default {
     };
   },
 
+
+
   methods: {
     changeActive(index) {
       for (let i = 0; i < this.store.links.length; i++) {
@@ -23,6 +25,7 @@ export default {
 
       this.store.links[index].active = true;
     },
+
   },
 
   emits: ['userSearch', 'userSelect'],
@@ -38,8 +41,7 @@ export default {
         <h1 @click="$emit('userSelect'), changeActive(0)" id="logo">Boolflix</h1>
         <ul id="link">
           <!-- <li @click="$emit('home'), changeActive()" :class="store.links[0].active ? 'active' : ''">{{ store.links[0].text }}</li>
-                                                                                                                  <li @click="$emit('movies')" :class="store.links[1].active ? 'active' : ''">{{ store.links[1].text }}</li>
-                                                                                                                  <li @click="$emit('tvShows')" :class="store.links[2].active ? 'active' : ''">{{ store.links[2].text }}</li> -->
+                                                    <li @click="$emit('tvShows')" :class="store.links[2].active ? 'active' : ''">{{ store.links[2].text }}</li> -->
 
           <li v-for="(link, index) in store.links" :class="store.links[index].active ? 'active' : ''"
             @click="changeActive(index), $emit('userSelect')">{{ link.text }}</li>
@@ -50,25 +52,9 @@ export default {
         <input v-model="store.MovieNameSearch" type="text" placeholder="Cerca per titolo"
           @keyup.enter="$emit('userSearch')">
         <button @click="$emit('userSearch')">Cerca</button>
-        <select name="genre" id="genre">
-          <!-- <option value="d">{{ store.moviesGenres[2].id }}</option>
-                                              <option value="s">{{ store.moviesGenres[3].name }}</option> -->
-          <option value="animation">{{ store.moviesGenres[2].name }}</option>
-          <option value="comedy">{{ store.moviesGenres[3].name }}</option>
-          <option value="crime">{{ store.moviesGenres[4].name }}</option>
-          <option :value="store.moviesGenres[5].name">{{ store.moviesGenres[5].name }}</option>
-          <option :value="store.moviesGenres[6].name">{{ store.moviesGenres[6].name }}</option>
-          <option :value="store.moviesGenres[7].name">{{ store.moviesGenres[7].name }}</option>
-          <option :value="store.moviesGenres[12].name">{{ store.moviesGenres[12].name }}</option>
-          <option :value="store.moviesGenres[18].name">{{ store.moviesGenres[18].name }}</option>
 
-
-
-
-
-
-
-
+        <select v-model="store.selectedGenre" class="genre-selection" name="genre" id="genre">
+          <option v-for="genre in store.moviesGenres" :value="genre.id">{{ genre.name }}</option>
         </select>
       </div>
     </div>
@@ -138,16 +124,16 @@ export default {
       padding-left: 40px;
       border: .1px solid white;
       cursor: pointer;
-    }
 
-    input:focus-visible {
-      outline: 1px solid white;
-      border-radius: 0;
-      color: white;
-    }
+      &:focus-visible {
+        outline: 1px solid white;
+        border-radius: 0;
+        color: white;
+      }
 
-    input::placeholder {
-      color: grey;
+      &::placeholder {
+        color: grey;
+      }
     }
 
     .fa-solid {
@@ -164,15 +150,27 @@ export default {
       padding: 0 2em;
       border: 1px solid white;
       cursor: pointer;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+
     }
 
-    button:hover {
-      background-color: white;
-      color: black;
-    }
+    .genre-selection {
+      background-color: #141414;
+      border: transparent;
+      height: 30px;
+      border: .1px solid white;
+      cursor: pointer;
 
+      &:focus-visible {
+        outline: 1px solid white;
+        border-radius: 0;
+        color: white;
+      }
+    }
   }
-
-
 }
 </style>

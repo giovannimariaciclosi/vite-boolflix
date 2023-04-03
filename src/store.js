@@ -5,7 +5,7 @@ export const store = reactive({
   tvShows: [],
 
   moviesGenres: [],
-  tvShowsGenres: [],
+  // tvShowsGenres: [],
 
   APIbaseSearchMovie: "https://api.themoviedb.org/3/search/movie?",
   APIbaseSearchTvShow: "https://api.themoviedb.org/3/search/tv?",

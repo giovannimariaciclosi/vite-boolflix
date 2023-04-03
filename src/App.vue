@@ -143,22 +143,22 @@ export default {
 
     getGenres() {
       // costruisco l'url per la chiamata API
-      let APIfullSearchMovie = "https://api.themoviedb.org/3/genre/movie/list?" + this.store.APIkey;
-      let APIfullSearchTvShow = "https://api.themoviedb.org/3/genre/tv/list?" + this.store.APIkey;
+      let APIfullSearchMovie = "https://api.themoviedb.org/3/genre/movie/list?" + this.store.APIkey + "&language=it-IT";
+      // let APIfullSearchTvShow = "https://api.themoviedb.org/3/genre/tv/list?" + this.store.APIkey + "&language=it-IT";
 
       // eseguo la chiamata
       axios.get(APIfullSearchMovie).then((res) => {
 
         this.store.moviesGenres = res.data.genres;
-        console.log(store.moviesGenres)
+        // console.log(store.moviesGenres)
       });
 
       // eseguo la chiamata
-      axios.get(APIfullSearchTvShow).then((res) => {
+      // axios.get(APIfullSearchTvShow).then((res) => {
 
-        this.store.tvShowsGenres = res.data.genres;
-        console.log(store.tvShowsGenres)
-      });
+      //   this.store.tvShowsGenres = res.data.genres;
+      //   console.log(store.tvShowsGenres)
+      // });
     },
 
   },

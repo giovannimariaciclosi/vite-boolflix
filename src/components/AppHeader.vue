@@ -54,7 +54,7 @@ export default {
   align-items: center;
   justify-content: space-between;
 
-  padding: 10px 50px;
+  padding: 10px 0;
 
   .logo {
     cursor: pointer;

@@ -22,6 +22,8 @@ export default {
 
   created() {
 
+    this.trending();
+
   },
 
   methods: {
@@ -51,6 +53,33 @@ export default {
 
     },
 
+    trending() {
+      let APIfullSearchMovie = "https://api.themoviedb.org/3/trending/movie/day?" + this.store.APIkey;
+      let APIfullSearchTvShow = "https://api.themoviedb.org/3/trending/tv/day?" + this.store.APIkey;
+      console.log(APIfullSearchMovie);
+      console.log(APIfullSearchTvShow);
+
+
+      axios.get(APIfullSearchMovie).then((res) => {
+
+        console.log(res.data.results);
+
+        this.store.movies = res.data.results;
+        this.store.isLoading = false;
+        // console.log(this.store.movies);
+      });
+
+      axios.get(APIfullSearchTvShow).then((res) => {
+
+        console.log(res.data.results);
+
+        this.store.tvShows = res.data.results;
+        this.store.isLoading = false;
+        // console.log(this.store.tvShows);
+      });
+
+    },
+
   },
 
 }
@@ -63,8 +92,13 @@ export default {
     <AppHeader @userSearch="searchMovie()"></AppHeader>
   </header>
   <main>
-    <AppMain></AppMain>
+    <div class="loading" v-if="store.isLoading">Caricamento</div>
+    <AppMain v-else></AppMain>
   </main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.loading {
+  font-size: 2em;
+}
+</style>

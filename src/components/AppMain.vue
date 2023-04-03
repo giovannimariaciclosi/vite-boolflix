@@ -27,20 +27,24 @@ export default {
 </script>
 
 <template>
-  <h1>Movies:</h1>
+  <div class="main-container">
+    <h2>Movies:</h2>
+  </div>
   <div class="main-container">
     <MovieItem v-for="movie in store.movies" :movie="movie"></MovieItem>
   </div>
 
-  <h1>TV Shows:</h1>
+  <div class="main-container">
+    <h2>TV Shows:</h2>
+  </div>
   <div class="main-container">
     <TvItem v-for="tvShow in store.tvShows" :tvShow="tvShow"></TvItem>
   </div>
 </template>
 
 <style lang="scss" scoped>
-h1 {
-  padding-top: 100px;
+h2 {
+  padding-top: 80px;
   text-align: center;
 }
 

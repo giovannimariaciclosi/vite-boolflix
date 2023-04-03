@@ -21,4 +21,19 @@ export const store = reactive({
   APIsearchQuery: "query=",
 
   MovieNameSearch: "",
+
+  links: [
+    {
+      text: "Home",
+      active: true,
+    },
+    {
+      text: "Film",
+      active: false,
+    },
+    {
+      text: "Serie TV",
+      active: false,
+    },
+  ],
 });

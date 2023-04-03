@@ -15,7 +15,17 @@ export default {
     };
   },
 
-  emits: ['userSearch'],
+  methods: {
+    changeActive(index) {
+      for (let i = 0; i < this.store.links.length; i++) {
+        this.store.links[i].active = false;
+      };
+
+      this.store.links[index].active = true;
+    },
+  },
+
+  emits: ['userSearch', 'home', 'movies', 'tvShows', 'userSelect'],
 
 
 }
@@ -24,10 +34,18 @@ export default {
 <template>
   <div id="main-container">
     <div id="header-container">
-      <div class="logo">
-        <h1>Boolflix</h1>
+      <div id="header-left">
+        <h1 @click="$emit('userSelect'), changeActive(0)" id="logo">Boolflix</h1>
+        <ul id="link">
+          <!-- <li @click="$emit('home'), changeActive()" :class="store.links[0].active ? 'active' : ''">{{ store.links[0].text }}</li>
+                                  <li @click="$emit('movies')" :class="store.links[1].active ? 'active' : ''">{{ store.links[1].text }}</li>
+                                  <li @click="$emit('tvShows')" :class="store.links[2].active ? 'active' : ''">{{ store.links[2].text }}</li> -->
+
+          <li v-for="(link, index) in store.links" :class="store.links[index].active ? 'active' : ''"
+            @click="changeActive(index), $emit('userSelect')">{{ link.text }}</li>
+        </ul>
       </div>
-      <div id="search-container">
+      <div id="header-right">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input v-model="store.MovieNameSearch" type="text" placeholder="Cerca per titolo"
           @keyup.enter="$emit('userSearch')">
@@ -54,14 +72,40 @@ export default {
   align-items: center;
   justify-content: space-between;
 
-  padding: 10px 0;
+  padding: 10px 10px;
 
-  .logo {
-    cursor: pointer;
-    color: #e50914;
+  #header-left {
+
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    #logo {
+      cursor: pointer;
+      color: #e50914;
+    }
+
+    #link {
+      list-style-type: none;
+      display: flex;
+      gap: 20px;
+      cursor: pointer;
+
+      li {
+        transition: color .3s;
+      }
+
+      li:hover {
+        color: grey;
+      }
+
+      li.active {
+        font-weight: bold;
+      }
+    }
   }
 
-  #search-container {
+  #header-right {
     position: relative;
 
     display: flex;

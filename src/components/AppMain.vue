@@ -27,33 +27,44 @@ export default {
 </script>
 
 <template>
-  <div class="main-container">
+  <div class="main-container" v-if="store.movies.length > 0">
     <h2>Movies:</h2>
+    <div class="cards-container">
+      <MovieItem v-for="movie in store.movies" :movie="movie"></MovieItem>
+    </div>
   </div>
-  <div class="main-container">
-    <MovieItem v-for="movie in store.movies" :movie="movie"></MovieItem>
-  </div>
+  <div v-else></div>
 
-  <div class="main-container">
+
+  <div class="main-container" v-if="store.tvShows.length > 0">
     <h2>TV Shows:</h2>
+    <div class="cards-container">
+      <TvItem v-for="tvShow in store.tvShows" :tvShow="tvShow"></TvItem>
+    </div>
   </div>
-  <div class="main-container">
-    <TvItem v-for="tvShow in store.tvShows" :tvShow="tvShow"></TvItem>
-  </div>
+  <div v-else></div>
 </template>
 
 <style lang="scss" scoped>
-h2 {
-  padding-top: 80px;
-  text-align: center;
+.main-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 10px;
+  padding-bottom: 10px;
+
+  h2 {
+    padding-top: 80px;
+  }
 }
 
-.main-container {
+.cards-container {
   display: flex;
   flex-flow: row wrap;
   gap: 20px;
   margin: 0 auto;
   max-width: 1440px;
-  padding-top: 1em;
 }
 </style>

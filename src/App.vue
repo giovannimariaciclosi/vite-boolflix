@@ -29,6 +29,8 @@ export default {
   methods: {
 
     searchMovie() {
+      this.store.isLoading = true;
+
       let APIfullSearchMovie = this.store.APIbaseSearchMovie + this.store.APIkey + this.store.languageIT + this.store.safeForWork + this.store.APIsearchQuery + encodeURIComponent(this.store.MovieNameSearch);
       let APIfullSearchTvShow = this.store.APIbaseSearchTvShow + this.store.APIkey + this.store.languageIT + this.store.safeForWork + this.store.APIsearchQuery + encodeURIComponent(this.store.MovieNameSearch);
       console.log(APIfullSearchMovie);
@@ -39,6 +41,7 @@ export default {
         console.log(res.data.results);
 
         this.store.movies = res.data.results;
+        this.store.isLoading = false;
         // console.log(this.store.movies);
       });
 
@@ -47,10 +50,14 @@ export default {
         console.log(res.data.results);
 
         this.store.tvShows = res.data.results;
+        this.store.isLoading = false;
         // console.log(this.store.tvShows);
       });
 
-
+      // se l'utente inserisce una stringa vuota visualizzo film e serie tv in tendenza
+      if (this.store.MovieNameSearch == "") {
+        this.trending()
+      }
     },
 
     trending() {
@@ -80,6 +87,61 @@ export default {
 
     },
 
+
+
+    userSelect() {
+
+      if (this.store.links[0].text == "Home" && this.store.links[0].active == true) {
+
+        this.store.isLoading = true;
+        this.store.movies = [];
+        this.store.tvShows = [];
+
+        let APIfullSearchMovie = "https://api.themoviedb.org/3/trending/movie/day?" + this.store.APIkey;
+        let APIfullSearchTvShow = "https://api.themoviedb.org/3/trending/tv/day?" + this.store.APIkey;
+
+        axios.get(APIfullSearchMovie).then((res) => {
+          this.store.movies = res.data.results;
+          this.store.isLoading = false;
+        });
+
+        axios.get(APIfullSearchTvShow).then((res) => {
+          this.store.tvShows = res.data.results;
+          this.store.isLoading = false;
+        });
+      };
+
+      if (this.store.links[1].text == "Film" && this.store.links[1].active == true) {
+
+        this.store.isLoading = true;
+        this.store.movies = [];
+        this.store.tvShows = [];
+
+        let APIfullSearchMovie = "https://api.themoviedb.org/3/trending/movie/day?" + this.store.APIkey;
+
+        axios.get(APIfullSearchMovie).then((res) => {
+          this.store.movies = res.data.results;
+          this.store.isLoading = false;
+        });
+
+      };
+
+      if (this.store.links[2].text == "Serie TV" && this.store.links[2].active == true) {
+
+        this.store.isLoading = true;
+        this.store.movies = [];
+        this.store.tvShows = [];
+
+        let APIfullSearchTvShow = "https://api.themoviedb.org/3/trending/tv/day?" + this.store.APIkey;
+
+        axios.get(APIfullSearchTvShow).then((res) => {
+          this.store.tvShows = res.data.results;
+          this.store.isLoading = false;
+        });
+
+      };
+    },
+
   },
 
 }
@@ -89,7 +151,8 @@ export default {
 
 <template>
   <header>
-    <AppHeader @userSearch="searchMovie()"></AppHeader>
+    <AppHeader @userSearch="searchMovie()" @userSelect="userSelect()">
+    </AppHeader>
   </header>
   <main>
     <div class="loading" v-if="store.isLoading">Caricamento</div>
@@ -99,6 +162,10 @@ export default {
 
 <style lang="scss" scoped>
 .loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
   font-size: 2em;
 }
 </style>

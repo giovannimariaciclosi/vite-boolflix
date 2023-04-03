@@ -69,7 +69,7 @@ export default {
       let imagePath = this.store.APIimageBase + this.store.APIimageSize + this.tvShow.poster_path;
 
       if (this.tvShow.poster_path == null) {
-        return "https://image.tmdb.org/t/p/w200//9p10J9Xp7MuaVac56g8BwAuXEsA.jpg";
+        return "https://image.tmdb.org/t/p/w342//9p10J9Xp7MuaVac56g8BwAuXEsA.jpg";
       };
 
       return imagePath;
@@ -109,6 +109,7 @@ export default {
 
     <div class="rating">
       <i v-for="star in getTvShowRating" class="fa-solid fa-star"></i>
+      <i v-for="star in (5 - getTvShowRating)" :key="index" class="fa-regular fa-star"></i>
     </div>
 
     <img :src="getTvShowImagePath" alt="test">

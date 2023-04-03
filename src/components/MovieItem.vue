@@ -70,7 +70,7 @@ export default {
 
 
       if (this.movie.poster_path == null) {
-        return "https://image.tmdb.org/t/p/w200//9p10J9Xp7MuaVac56g8BwAuXEsA.jpg";
+        return "https://image.tmdb.org/t/p/w342//9p10J9Xp7MuaVac56g8BwAuXEsA.jpg";
       };
 
       return imagePath;
@@ -113,12 +113,13 @@ export default {
 
       <div class="rating">
         <i v-for="star in getMovieRating" class="fa-solid fa-star"></i>
+        <i v-for="star in 5 - getMovieRating" :key="index" class="fa-regular fa-star"></i>
       </div>
     </div>
 
     <!-- <div id="movie-poster">
-                              <img :src="getMovieImagePath" alt="test">
-                            </div> -->
+                                      <img :src="getMovieImagePath" alt="test">
+                                    </div> -->
 
 
   </div>

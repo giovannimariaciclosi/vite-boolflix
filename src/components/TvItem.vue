@@ -109,7 +109,7 @@ export default {
 
     <div class="rating">
       <i v-for="star in getTvShowRating" class="fa-solid fa-star"></i>
-      <i v-for="star in (5 - getTvShowRating)" :key="index" class="fa-regular fa-star"></i>
+      <i v-for="star in (5 - getTvShowRating)" class="fa-regular fa-star"></i>
     </div>
 
     <img :src="getTvShowImagePath" alt="test">

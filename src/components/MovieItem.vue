@@ -113,13 +113,13 @@ export default {
 
       <div class="rating">
         <i v-for="star in getMovieRating" class="fa-solid fa-star"></i>
-        <i v-for="star in 5 - getMovieRating" :key="index" class="fa-regular fa-star"></i>
+        <i v-for="star in (5 - getMovieRating)" class="fa-regular fa-star"></i>
       </div>
     </div>
 
     <!-- <div id="movie-poster">
-                                      <img :src="getMovieImagePath" alt="test">
-                                    </div> -->
+                                                <img :src="getMovieImagePath" alt="test">
+                                              </div> -->
 
 
   </div>
@@ -127,7 +127,7 @@ export default {
 
 <style lang="scss" scoped>
 .movie:hover {
-  background-image: none;
+  background-image: none !important;
 }
 
 .movie {

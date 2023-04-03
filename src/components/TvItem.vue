@@ -96,31 +96,80 @@ export default {
 </script>
 
 <template>
-  <div class="tv-shows">
+  <div class="tv-show">
 
-    <div>{{ tvShow.name }}</div>
+    <img class="tv-show-poster" :src="getTvShowImagePath" alt="Tv Show Poster Image">
 
-    <div>{{ tvShow.original_name }}</div>
+    <div class="tv-show-info">
+      <div class="title"><strong>Titolo: </strong>{{ tvShow.name }}</div>
 
-    <div>{{ tvShow.original_language }}</div>
-    <span class="fi" :class="'fi-' + convertLangToCountry"></span>
+      <div class="original-title"><strong>Titolo Originale: </strong>{{ tvShow.original_name }}</div>
 
-    <div>{{ getTvShowRating }}</div>
+      <span class="fi" :class="'fi-' + convertLangToCountry"></span>
 
-    <div class="rating">
-      <i v-for="star in getTvShowRating" class="fa-solid fa-star"></i>
-      <i v-for="star in (5 - getTvShowRating)" class="fa-regular fa-star"></i>
+      <div class="rating">
+        <strong>Voto: </strong>
+        <i v-for="star in getTvShowRating" class="fa-solid fa-star"></i>
+        <i v-for="star in (5 - getTvShowRating)" class="fa-regular fa-star"></i>
+      </div>
+
+      <div class="overview"><strong>Descrizione: </strong><span>{{ tvShow.overview }}</span></div>
+
     </div>
 
-    <img :src="getTvShowImagePath" alt="test">
 
   </div>
 </template>
 
 <style lang="scss" scoped>
-.tv-shows {
+.tv-show:hover .tv-show-poster {
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.tv-show:hover .tv-show-info {
+  opacity: 1;
+}
+
+.tv-show {
+  position: relative;
+
   width: calc(100% / 4 - 20px / 4 * 3);
   display: flex;
   flex-direction: column;
+
+  height: 513px;
+  cursor: pointer;
+
+  overflow: hidden;
+
+  .tv-show-poster {
+    border: 1px solid white;
+    height: 100%;
+    width: 100%;
+  }
+
+  .tv-show-info {
+    padding: 2em;
+    position: absolute;
+    opacity: 0;
+    transition: opacity .3s;
+
+    height: 100%;
+    width: 100%;
+    border: 1px solid white;
+
+    .rating {
+      padding-bottom: 1em;
+    }
+
+    .overview {
+      line-height: 18px;
+
+      span {
+        font-size: .8em;
+      }
+    }
+  }
 }
 </style>

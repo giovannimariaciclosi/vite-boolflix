@@ -4,6 +4,9 @@ export const store = reactive({
   movies: [],
   tvShows: [],
 
+  moviesGenres: [],
+  tvShowsGenres: [],
+
   APIbaseSearchMovie: "https://api.themoviedb.org/3/search/movie?",
   APIbaseSearchTvShow: "https://api.themoviedb.org/3/search/tv?",
 
@@ -22,6 +25,9 @@ export const store = reactive({
 
   //inizializzo una stringa per prendere il valore dell'input che inserirà l'utente
   MovieNameSearch: "",
+
+  //inizializzo una stringa per prendere il genere selezionato dall'utente
+  selectedGenre: "",
 
   links: [
     {

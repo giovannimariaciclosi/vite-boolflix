@@ -38,8 +38,8 @@ export default {
         <h1 @click="$emit('userSelect'), changeActive(0)" id="logo">Boolflix</h1>
         <ul id="link">
           <!-- <li @click="$emit('home'), changeActive()" :class="store.links[0].active ? 'active' : ''">{{ store.links[0].text }}</li>
-                                    <li @click="$emit('movies')" :class="store.links[1].active ? 'active' : ''">{{ store.links[1].text }}</li>
-                                    <li @click="$emit('tvShows')" :class="store.links[2].active ? 'active' : ''">{{ store.links[2].text }}</li> -->
+                                                                                                                  <li @click="$emit('movies')" :class="store.links[1].active ? 'active' : ''">{{ store.links[1].text }}</li>
+                                                                                                                  <li @click="$emit('tvShows')" :class="store.links[2].active ? 'active' : ''">{{ store.links[2].text }}</li> -->
 
           <li v-for="(link, index) in store.links" :class="store.links[index].active ? 'active' : ''"
             @click="changeActive(index), $emit('userSelect')">{{ link.text }}</li>
@@ -50,6 +50,26 @@ export default {
         <input v-model="store.MovieNameSearch" type="text" placeholder="Cerca per titolo"
           @keyup.enter="$emit('userSearch')">
         <button @click="$emit('userSearch')">Cerca</button>
+        <select name="genre" id="genre">
+          <!-- <option value="d">{{ store.moviesGenres[2].id }}</option>
+                                              <option value="s">{{ store.moviesGenres[3].name }}</option> -->
+          <option value="animation">{{ store.moviesGenres[2].name }}</option>
+          <option value="comedy">{{ store.moviesGenres[3].name }}</option>
+          <option value="crime">{{ store.moviesGenres[4].name }}</option>
+          <option :value="store.moviesGenres[5].name">{{ store.moviesGenres[5].name }}</option>
+          <option :value="store.moviesGenres[6].name">{{ store.moviesGenres[6].name }}</option>
+          <option :value="store.moviesGenres[7].name">{{ store.moviesGenres[7].name }}</option>
+          <option :value="store.moviesGenres[12].name">{{ store.moviesGenres[12].name }}</option>
+          <option :value="store.moviesGenres[18].name">{{ store.moviesGenres[18].name }}</option>
+
+
+
+
+
+
+
+
+        </select>
       </div>
     </div>
   </div>

@@ -66,5 +66,6 @@ export default {
   gap: 20px;
   margin: 0 auto;
   max-width: 1440px;
+  width: 100%;
 }
 </style>

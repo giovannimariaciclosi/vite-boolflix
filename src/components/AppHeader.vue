@@ -25,7 +25,7 @@ export default {
     },
   },
 
-  emits: ['userSearch', 'home', 'movies', 'tvShows', 'userSelect'],
+  emits: ['userSearch', 'userSelect'],
 
 
 }
@@ -38,8 +38,8 @@ export default {
         <h1 @click="$emit('userSelect'), changeActive(0)" id="logo">Boolflix</h1>
         <ul id="link">
           <!-- <li @click="$emit('home'), changeActive()" :class="store.links[0].active ? 'active' : ''">{{ store.links[0].text }}</li>
-                                  <li @click="$emit('movies')" :class="store.links[1].active ? 'active' : ''">{{ store.links[1].text }}</li>
-                                  <li @click="$emit('tvShows')" :class="store.links[2].active ? 'active' : ''">{{ store.links[2].text }}</li> -->
+                                    <li @click="$emit('movies')" :class="store.links[1].active ? 'active' : ''">{{ store.links[1].text }}</li>
+                                    <li @click="$emit('tvShows')" :class="store.links[2].active ? 'active' : ''">{{ store.links[2].text }}</li> -->
 
           <li v-for="(link, index) in store.links" :class="store.links[index].active ? 'active' : ''"
             @click="changeActive(index), $emit('userSelect')">{{ link.text }}</li>

@@ -20,6 +20,7 @@ export const store = reactive({
 
   APIsearchQuery: "query=",
 
+  //inizializzo una stringa per prendere il valore dell'input che inserirà l'utente
   MovieNameSearch: "",
 
   links: [

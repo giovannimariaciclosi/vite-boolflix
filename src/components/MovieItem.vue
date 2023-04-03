@@ -66,16 +66,18 @@ export default {
 
     getMovieImagePath() {
 
+      // costruisco il path per l'immagine di copertina del film
       let imagePath = this.store.APIimageBase + this.store.APIimageSize + this.movie.poster_path;
 
-
+      // nel caso in cui non fosse presente una copertina, prendo quella di Pulp Fiction
       if (this.movie.poster_path == null) {
-        return "https://image.tmdb.org/t/p/w342//9p10J9Xp7MuaVac56g8BwAuXEsA.jpg";
+        return "https://image.tmdb.org/t/p/w342/9p10J9Xp7MuaVac56g8BwAuXEsA.jpg";
       };
 
       return imagePath;
     },
 
+    // prendo il voto del film (valore fino a 10) e lo trasformo in un numero da 1 a 5
     getMovieRating() {
 
       let movieRating = Math.ceil(Math.floor(this.movie.vote_average) / 2);

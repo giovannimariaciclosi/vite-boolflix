@@ -21,7 +21,7 @@ export default {
   },
 
   computed: {
-
+    // converto la lingua nell'iniziale del paese corrispondente per inserire le icone della bandiera
     convertLangToCountry() {
       let language = this.tvShow.original_language;
 
@@ -64,18 +64,20 @@ export default {
       return language;
     },
 
+    // costruisco il path per l'immagine di copertina della serie tv
     getTvShowImagePath() {
 
       let imagePath = this.store.APIimageBase + this.store.APIimageSize + this.tvShow.poster_path;
 
+      // nel caso in cui non fosse presente una copertina, prendo quella di Pulp Fiction
       if (this.tvShow.poster_path == null) {
-        return "https://image.tmdb.org/t/p/w342//9p10J9Xp7MuaVac56g8BwAuXEsA.jpg";
+        return "https://image.tmdb.org/t/p/w342/9p10J9Xp7MuaVac56g8BwAuXEsA.jpg";
       };
-
       return imagePath;
 
     },
 
+    // prendo il voto della serie (valore fino a 10) e lo trasformo in un numero da 1 a 5
     getTvShowRating() {
 
       let tvShowRating = Math.ceil(Math.floor(this.tvShow.vote_average) / 2);

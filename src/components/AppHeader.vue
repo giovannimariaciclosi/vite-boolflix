@@ -28,7 +28,7 @@ export default {
 
   },
 
-  emits: ['userSearch', 'userSelect'],
+  emits: ['userSearch', 'userSelect', 'filterGenres'],
 
 
 }
@@ -41,7 +41,7 @@ export default {
         <h1 @click="$emit('userSelect'), changeActive(0)" id="logo">Boolflix</h1>
         <ul id="link">
           <!-- <li @click="$emit('home'), changeActive()" :class="store.links[0].active ? 'active' : ''">{{ store.links[0].text }}</li>
-                                                    <li @click="$emit('tvShows')" :class="store.links[2].active ? 'active' : ''">{{ store.links[2].text }}</li> -->
+                                                            <li @click="$emit('tvShows')" :class="store.links[2].active ? 'active' : ''">{{ store.links[2].text }}</li> -->
 
           <li v-for="(link, index) in store.links" :class="store.links[index].active ? 'active' : ''"
             @click="changeActive(index), $emit('userSelect')">{{ link.text }}</li>
@@ -53,7 +53,8 @@ export default {
           @keyup.enter="$emit('userSearch')">
         <button @click="$emit('userSearch')">Cerca</button>
 
-        <select v-model="store.selectedGenre" class="genre-selection" name="genre" id="genre">
+        <select @click="$emit('filterGenres')" v-model="store.selectedGenre" class="genre-selection" name="genre"
+          id="genre">
           <option v-for="genre in store.moviesGenres" :value="genre.id">{{ genre.name }}</option>
         </select>
       </div>

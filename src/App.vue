@@ -165,7 +165,7 @@ export default {
       console.log(store.selectedGenre)
 
       // store.movies.includes(store.movies.filter(genre => genre.genre_ids[0] === store.selectedGenre));
-      store.movies = store.movies.filter(genre => genre.genre_ids[0] === store.selectedGenre);
+      store.movies = store.movies.filter(genre => genre.genre_ids.includes(store.selectedGenre));
 
 
       console.log(store.movies);
